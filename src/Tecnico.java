@@ -29,7 +29,11 @@ public class Tecnico {
 
     // set idade
     public void setIdade(int idade) {
-        this.idade = idade;
+        if (idade > 0) {
+            this.idade = idade;
+        } else {
+            System.out.println("A idade deve ser maior que zero!!!");
+        }
     }
 
     // get idade
@@ -39,7 +43,11 @@ public class Tecnico {
 
     // set salario
     public void setSalario(float salario) {
-        this.salario = salario;
+        if (salario >= 0) {
+            this.salario = salario;
+        } else {
+            System.out.println("O salario não pode ser negativo");
+        }
     }
 
     // get salario
@@ -55,5 +63,14 @@ public class Tecnico {
     // get anosExperiencia
     public int getAnosExperiencia() {
         return this.anosExperiencia;
+    }
+
+    public void exibirInformacoes(){
+        System.out.println("********** INFORMACOES DO TECNICO **********");
+        System.out.println("Nome.................: " + nome);
+        System.out.println("Idade................: " + idade);
+        System.out.println("Salário..............: R$ " + salario);
+        System.out.println("Anos de experiência..: " + anosExperiencia);
+        System.out.println();
     }
 }

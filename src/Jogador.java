@@ -31,7 +31,12 @@ public class Jogador {
 
     // set idade
     public void setIdade(int idade) {
-        this.idade = idade;
+        if (idade > 0) {
+            this.idade = idade;
+        }
+        else {
+            System.out.println("A idade deve ser maior que zero!");
+        }
     }
 
     // get idade
@@ -51,7 +56,11 @@ public class Jogador {
 
     // set salario
     public void setSalario(float salario) {
-        this.salario = salario;
+        if (salario >= 0) {
+            this.salario = salario;
+        } else {
+            System.out.println("O salario nao pode ser menor que zero");
+        }
     }
 
     // get salario
@@ -67,6 +76,16 @@ public class Jogador {
     //get contratado
     public boolean isContratado() {
         return this.contratado;
+    }
+
+    public void exibirInformacoes() {
+        System.out.println("********** INFORMACOES DO JOGADOR **********");
+        System.out.println("Nome........: " + nome);
+        System.out.println("Idade.......: " + idade);
+        System.out.println("Posição.....: " + posicao);
+        System.out.println("Salário.....: R$ " + salario);
+        System.out.println("Contratado..: " + (isContratado() ? "SIM": "NÃO"));
+        System.out.println();
     }
 
 
