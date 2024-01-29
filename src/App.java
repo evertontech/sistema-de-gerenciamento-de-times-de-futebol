@@ -1,6 +1,3 @@
-import java.util.ArrayList;
-import java.util.List;
-
 public class App {
 
     public static void main(String[] args) {
@@ -16,19 +13,22 @@ public class App {
         Jogador jogador10 = new Jogador("Alphonso Davies", 21, "Defensor", 140000.0f, false);
         Jogador jogador11 = new Jogador("Kingsley Coman", 25, "Atacante", 160000.0f, true);
 
-
         Tecnico tecnico = new Tecnico("Tite", 60, 1000000.0f, 20);
-
 
         Time time = new Time("Seleção Brasileira", "Rio de Janeiro", 1914, tecnico);
         time.adicionarJogador(jogador1);
         time.adicionarJogador(jogador2);
         time.adicionarJogador(jogador3);
         time.adicionarJogador(jogador4);
+        time.adicionarJogador(jogador5);
+        time.adicionarJogador(jogador6);
+        time.adicionarJogador(jogador7);
+        time.adicionarJogador(jogador8);
+        time.adicionarJogador(jogador9);
+        time.adicionarJogador(jogador10);
+        time.adicionarJogador(jogador11);
 
-        System.out.println("A média de idade dos jogadores é: " + time.calcularMedia());
-        time.exibirInformacoes();
-
-
+        System.out.println("A média de idade dos jogadores é: " + time.calcularMediaDeIdadeDosJogadores());
+        time.exibirTodasAsInformacoes();
     }
 }

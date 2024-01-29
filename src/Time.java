@@ -6,31 +6,17 @@ import java.util.List;
 public class Time {
     private String nome;
     private String cidade;
-    private int anoFundacao;
-    private List<Jogador> listaJogadores;
+    private int anoDeFundacao;
     private Tecnico tecnicoResponsavel;
-
-    // construtor vazio
-    public Time() {
-        listaJogadores = new ArrayList<>();
-    }
-
-    // construtor com todos os atributos, o construtor chamar o sets
-    public Time(String nome, String cidade, int anoFundacao, List<Jogador> listaJogadores, Tecnico tecnicoResponsavel) {
-        this.setNome(nome);
-        this.setCidade(cidade);
-        this.setAnoFundacao(anoFundacao);
-        this.setListaJogadores(listaJogadores);
-        this.setTecnico(tecnicoResponsavel);
-    }
+    private List<Jogador> listaDeJogadores;
 
     // segundo construtor com os atributos
-    public Time(String nome, String cidade, int anoFundacao, Tecnico tecnicoResponsavel) {
+    public Time(String nome, String cidade, int anoDeFundacao, Tecnico tecnicoResponsavel) {
         this.setNome(nome);
         this.setCidade(cidade);
-        this.setAnoFundacao(anoFundacao);
+        this.setAnoDeFundacao(anoDeFundacao);
         this.setTecnico(tecnicoResponsavel);
-        this.listaJogadores = new ArrayList<>();
+        this.listaDeJogadores = new ArrayList<>();
     }
 
     // set nome
@@ -54,28 +40,23 @@ public class Time {
     }
 
     // set anoFundacao
-    public void setAnoFundacao(int anoFundacao) {
+    public void setAnoDeFundacao(int anoDeFundacao) {
         int anoAtual = LocalDateTime.now().getYear();
-        if (anoFundacao <= anoAtual) {
-            this.anoFundacao = anoFundacao;
+        if (anoDeFundacao <= anoAtual) {
+            this.anoDeFundacao = anoDeFundacao;
         } else {
             System.out.println("O ano de fundação não pode ser maior que o atual");
         }
     }
 
     // get anoFundacao
-    public int getAnoFundacao() {
-        return this.anoFundacao;
-    }
-
-    // set listaJogadores
-    public void setListaJogadores(List<Jogador> listaJogadores) {
-        this.listaJogadores = listaJogadores;
+    public int getAnoDeFundacao() {
+        return this.anoDeFundacao;
     }
 
     // get listaJogadores
     public List<Jogador> getListaDeJogadores() {
-        return this.listaJogadores;
+        return this.listaDeJogadores;
     }
 
     // set Tecnico
@@ -89,35 +70,46 @@ public class Time {
     }
 
     // Método que calcula média de idade dos jogadores
-    public float calcularMedia() {
-        int i;
+    public float calcularMediaDeIdadeDosJogadores() {
         int somaIdade = 0;
 
-        for (i = 0; i < listaJogadores.size(); i++) {
-          somaIdade = somaIdade + listaJogadores.get(i).getIdade();
+        for (Jogador jogador : listaDeJogadores) {
+          somaIdade = somaIdade + jogador.getIdade();
         }
 
-        return somaIdade / 11.0f;
+        return somaIdade / (float) listaDeJogadores.size();
     }
 
     //Método para imprimir todas as informações de um time
-    public void exibirInformacoes() {
+    public void exibirTodasAsInformacoes() {
 
         System.out.println("*********** INFORMACOES DO TIME ************");
         System.out.println("Nome.............: " + nome);
         System.out.println("Cidade...........: " + cidade);
-        System.out.println("Ano de fundação..: " + anoFundacao);
+        System.out.println("Ano de fundação..: " + anoDeFundacao);
         System.out.println();
-        tecnicoResponsavel.exibirInformacoes();
-        for (int i = 0; i < listaJogadores.size(); ++i) {
-            Jogador jogador = listaJogadores.get(i);
-            jogador.exibirInformacoes();
+
+        System.out.println("********** INFORMACOES DO TECNICO **********");
+        System.out.println("Nome.................: " + tecnicoResponsavel.getNome());
+        System.out.println("Idade................: " + tecnicoResponsavel.getIdade());
+        System.out.println("Salário..............: R$ " + tecnicoResponsavel.getSalario());
+        System.out.println("Anos de experiência..: " + tecnicoResponsavel.getAnosDeExperiencia());
+        System.out.println();
+
+        for (Jogador jogador : listaDeJogadores) {
+            System.out.println("********** INFORMACOES DO JOGADOR **********");
+            System.out.println("Nome........: " + jogador.getNome());
+            System.out.println("Idade.......: " + jogador.getIdade());
+            System.out.println("Posição.....: " + jogador.getPosicao());
+            System.out.println("Salário.....: R$ " + jogador.getSalario());
+            System.out.println("Contratado..: " + (jogador.isContratado() ? "SIM" : "NÃO"));
+            System.out.println();
         }
     }
 
     //método para adicionar jogador
     // Observação: No parâmetro, qual é a classe do objeto
-    public void adicionarJogador(Jogador jogador){
-        this.listaJogadores.add(jogador);
+    public void adicionarJogador(Jogador jogadorParaAdicionar){
+        this.listaDeJogadores.add(jogadorParaAdicionar);
     }
 }

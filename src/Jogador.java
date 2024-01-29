@@ -5,11 +5,6 @@ public class Jogador {
     private float salario;
     private boolean contratado;
 
-    //construtor vazio
-    public Jogador() {
-
-    }
-
     // construtor com sets
     public Jogador(String nome, int idade, String posicao, float salario, boolean contratado) {
         this.setNome(nome);
@@ -77,16 +72,4 @@ public class Jogador {
     public boolean isContratado() {
         return this.contratado;
     }
-
-    public void exibirInformacoes() {
-        System.out.println("********** INFORMACOES DO JOGADOR **********");
-        System.out.println("Nome........: " + nome);
-        System.out.println("Idade.......: " + idade);
-        System.out.println("Posição.....: " + posicao);
-        System.out.println("Salário.....: R$ " + salario);
-        System.out.println("Contratado..: " + (isContratado() ? "SIM": "NÃO"));
-        System.out.println();
-    }
-
-
 }
